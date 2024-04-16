@@ -39,5 +39,6 @@ reset_button.addEventListener("click", function () {
   cell_selector.forEach((cell) => {
     cell.textContent = "";
     currentPlayer = "X";
+    winner_message.textContent = "";
   });
 });
