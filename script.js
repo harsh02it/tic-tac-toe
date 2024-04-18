@@ -40,7 +40,6 @@ function extractCellIndexFromId(elementId) {
 function checkWinnerAndDisappearCell() {
   winnerFound = false;
   currentTurn++;
-  console.log(moveHistory);
 
   if (currentTurn >= 7) {
     const cellToDisappear = moveHistory.shift();
