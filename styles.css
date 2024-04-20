@@ -46,6 +46,12 @@ h1 {
   background-color: #f8f8f8;
 }
 
+#message {
+  text-align: center;
+  font-size: 24px;
+  margin-top: 20px;
+}
+
 #reset {
   display: block;
   margin: 50px auto;

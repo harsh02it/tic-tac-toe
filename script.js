@@ -19,17 +19,13 @@ const winningCombinations = [
 ];
 
 function handleCellClick(event) {
-  if (!event.target.textContent.trim()) {
+  if (!isGameOver() && !event.target.textContent.trim()) {
     const cellIndex = extractCellIndexFromId(event.target.id);
     moveHistory.push(cellIndex);
     event.target.textContent = currentPlayer;
     currentPlayer = currentPlayer === "X" ? "O" : "X";
 
     checkWinnerAndDisappearCell();
-
-    if (isGameOver()) {
-      resetGame();
-    }
   }
 }
 
@@ -50,14 +46,16 @@ function checkWinnerAndDisappearCell() {
   for (let i = 0; i < winningCombinations.length; i++) {
     const [a, b, c] = winningCombinations[i];
     if (isWinningCombination(a, b, c)) {
-      alert("Winner is " + cell_selector[a].textContent);
+      winner_message.textContent = "Winner is " + cell_selector[a].textContent;
+      winner_message.style.color = "green";
       winnerFound = true;
       break;
     }
   }
 
   if (winnerFound) {
-    resetGame();
+    disableGameBoard();
+    reset_button.style.display = "block";
   }
 }
 
@@ -73,13 +71,24 @@ function isGameOver() {
   return winnerFound;
 }
 
+function disableGameBoard() {
+  cell_selector.forEach((cell) => {
+    cell.removeEventListener("click", handleCellClick); // Remove the click event listener
+  });
+}
+
+reset_button.style.display = "none";
+
 function resetGame() {
   cell_selector.forEach((cell) => {
     cell.textContent = "";
+    cell.addEventListener("click", handleCellClick);
   });
   currentPlayer = "X";
   currentTurn = 0;
   moveHistory = [];
+  winnerFound = false;
+  reset_button.style.display = "none";
   winner_message.textContent = "";
 }
 
