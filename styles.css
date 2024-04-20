@@ -58,12 +58,14 @@ h1 {
 #reset {
   display: block;
   margin: 20px auto;
-  padding: 10px 20px;
+  padding: 10px 30px;
+  font-size: 20px;
   background-color: #333;
   color: #fff;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  border-radius: 10px;
 }
 
 #reset:hover {

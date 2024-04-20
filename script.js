@@ -27,6 +27,12 @@ function handleCellClick(event) {
     event.target.textContent = currentPlayer;
     currentPlayer = currentPlayer === "X" ? "O" : "X";
 
+    if (currentPlayer === "X") {
+      event.target.style.color = "red";
+    } else {
+      event.target.style.color = "blue";
+    }
+
     checkWinnerAndDisappearCell();
   }
 }
