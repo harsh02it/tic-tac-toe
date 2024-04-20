@@ -49,12 +49,15 @@ h1 {
 #message {
   text-align: center;
   font-size: 24px;
-  margin-top: 20px;
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f8f8f8;
+  border: 2px solid #333;
 }
 
 #reset {
   display: block;
-  margin: 50px auto;
+  margin: 20px auto;
   padding: 10px 20px;
   background-color: #333;
   color: #fff;

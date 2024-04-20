@@ -1,6 +1,8 @@
 const cell_selector = document.querySelectorAll(".cell");
 const reset_button = document.querySelector("#reset");
 const winner_message = document.querySelector("#message");
+winner_message.style.display = "none";
+reset_button.style.display = "none";
 
 let currentPlayer = "X";
 let currentTurn = 0;
@@ -55,6 +57,7 @@ function checkWinnerAndDisappearCell() {
 
   if (winnerFound) {
     disableGameBoard();
+    winner_message.style.display = "block";
     reset_button.style.display = "block";
   }
 }
@@ -73,11 +76,9 @@ function isGameOver() {
 
 function disableGameBoard() {
   cell_selector.forEach((cell) => {
-    cell.removeEventListener("click", handleCellClick); // Remove the click event listener
+    cell.removeEventListener("click", handleCellClick);
   });
 }
-
-reset_button.style.display = "none";
 
 function resetGame() {
   cell_selector.forEach((cell) => {
@@ -89,7 +90,7 @@ function resetGame() {
   moveHistory = [];
   winnerFound = false;
   reset_button.style.display = "none";
-  winner_message.textContent = "";
+  winner_message.style.display = "none";
 }
 
 cell_selector.forEach((cell) => {
