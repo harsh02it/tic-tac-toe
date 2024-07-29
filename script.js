@@ -1,108 +1,98 @@
-const cell_selector = document.querySelectorAll(".cell");
-const reset_button = document.querySelector("#reset");
-const winner_message = document.querySelector("#message");
-winner_message.style.display = "none";
-reset_button.style.display = "none";
+// Select DOM elements
+const cells = document.querySelectorAll(".cell");
+const resetButton = document.querySelector("#reset");
+const winnerMessage = document.querySelector("#message");
 
+// Game state variables
 let currentPlayer = "X";
-let currentTurn = 0;
 let moveHistory = [];
 let winnerFound = false;
 
+// Define winning combinations
 const winningCombinations = [
   [0, 1, 2],
   [3, 4, 5],
-  [6, 7, 8],
+  [6, 7, 8], // Rows
   [0, 3, 6],
   [1, 4, 7],
-  [2, 5, 8],
+  [2, 5, 8], // Columns
   [0, 4, 8],
-  [2, 4, 6],
+  [2, 4, 6], // Diagonals
 ];
 
+// Initialize game
+function initGame() {
+  winnerMessage.style.display = "none";
+  resetButton.style.display = "none";
+  cells.forEach((cell) => cell.addEventListener("click", handleCellClick));
+}
+
 function handleCellClick(event) {
-  if (!isGameOver() && !event.target.textContent.trim()) {
-    const cellIndex = extractCellIndexFromId(event.target.id);
-    moveHistory.push(cellIndex);
-    event.target.textContent = currentPlayer;
-    currentPlayer = currentPlayer === "X" ? "O" : "X";
+  const cell = event.target;
+  if (winnerFound || cell.textContent) return;
 
-    if (currentPlayer === "X") {
-      event.target.style.color = "red";
-    } else {
-      event.target.style.color = "blue";
-    }
+  cell.textContent = currentPlayer;
+  cell.style.color = currentPlayer === "X" ? "red" : "blue";
+  moveHistory.push(parseInt(cell.id.slice(5)));
 
-    checkWinnerAndDisappearCell();
-  }
+  updateBoard();
+  checkWinner();
+  currentPlayer = currentPlayer === "X" ? "O" : "X";
 }
 
-function extractCellIndexFromId(elementId) {
-  return parseInt(elementId.slice(5));
-}
+function updateBoard() {
+  const turn = moveHistory.length;
 
-function checkWinnerAndDisappearCell() {
-  winnerFound = false;
-  currentTurn++;
-
-  if (currentTurn >= 7) {
-    const cellToDisappear = moveHistory.shift();
-    const disappearingCell = document.getElementById(`cell-${cellToDisappear}`);
+  // Handle cell disappearance and blurring
+  if (turn > 6) {
+    const disappearingCellIndex = moveHistory.shift();
+    const disappearingCell = document.getElementById(
+      `cell-${disappearingCellIndex}`
+    );
     disappearingCell.textContent = "";
-  }
+    disappearingCell.style.color = ""; // Reset color
 
-  for (let i = 0; i < winningCombinations.length; i++) {
-    const [a, b, c] = winningCombinations[i];
-    if (isWinningCombination(a, b, c)) {
-      winner_message.textContent = "Winner is " + cell_selector[a].textContent;
-      winner_message.style.color = "green";
+    const blurCellIndex = moveHistory[0];
+    const blurCell = document.getElementById(`cell-${blurCellIndex}`);
+    blurCell.style.color = "rgba(0, 0, 0, 0.5)";
+  } else if (turn === 6) {
+    const blurCellIndex = moveHistory[0];
+    const blurCell = document.getElementById(`cell-${blurCellIndex}`);
+    blurCell.style.color = "rgba(0, 0, 0, 0.5)";
+  }
+}
+
+function checkWinner() {
+  for (const [a, b, c] of winningCombinations) {
+    if (
+      cells[a].textContent &&
+      cells[a].textContent === cells[b].textContent &&
+      cells[a].textContent === cells[c].textContent
+    ) {
       winnerFound = true;
+      winnerMessage.textContent = `Winner is ${cells[a].textContent}`;
+      winnerMessage.style.color = "green";
+      winnerMessage.style.display = "block";
+      resetButton.style.display = "block";
+      cells.forEach((cell) =>
+        cell.removeEventListener("click", handleCellClick)
+      );
       break;
     }
   }
-
-  if (winnerFound) {
-    disableGameBoard();
-    winner_message.style.display = "block";
-    reset_button.style.display = "block";
-  }
-}
-
-function isWinningCombination(cell1, cell2, cell3) {
-  return (
-    cell_selector[cell1].textContent &&
-    cell_selector[cell1].textContent === cell_selector[cell2].textContent &&
-    cell_selector[cell1].textContent === cell_selector[cell3].textContent
-  );
-}
-
-function isGameOver() {
-  return winnerFound;
-}
-
-function disableGameBoard() {
-  cell_selector.forEach((cell) => {
-    cell.removeEventListener("click", handleCellClick);
-  });
 }
 
 function resetGame() {
-  cell_selector.forEach((cell) => {
+  cells.forEach((cell) => {
     cell.textContent = "";
-    cell.addEventListener("click", handleCellClick);
+    cell.style.color = "";
   });
   currentPlayer = "X";
-  currentTurn = 0;
   moveHistory = [];
   winnerFound = false;
-  reset_button.style.display = "none";
-  winner_message.style.display = "none";
+  initGame();
 }
 
-cell_selector.forEach((cell) => {
-  cell.addEventListener("click", handleCellClick);
-});
-
-reset_button.addEventListener("click", function () {
-  resetGame();
-});
+// Event listeners
+resetButton.addEventListener("click", resetGame);
+initGame();

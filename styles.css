@@ -44,6 +44,11 @@ h1 {
 
 .cell:hover {
   background-color: #f8f8f8;
+  cursor: pointer;
+}
+
+.blurred {
+  filter: blur(4px); /* Apply blur effect */
 }
 
 #message {
