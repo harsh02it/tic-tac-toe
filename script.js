@@ -23,7 +23,6 @@ const winningCombinations = [
 // Initialize game
 function initGame() {
   winnerMessage.style.display = "none";
-  resetButton.style.display = "none";
   cells.forEach((cell) => cell.addEventListener("click", handleCellClick));
 }
 
@@ -73,7 +72,7 @@ function checkWinner() {
       winnerMessage.textContent = `Winner is ${cells[a].textContent}`;
       winnerMessage.style.color = "green";
       winnerMessage.style.display = "block";
-      resetButton.style.display = "block";
+
       cells.forEach((cell) =>
         cell.removeEventListener("click", handleCellClick)
       );
@@ -96,3 +95,33 @@ function resetGame() {
 // Event listeners
 resetButton.addEventListener("click", resetGame);
 initGame();
+
+// ... (previous code remains the same) ...
+
+// Get the modal
+const modal = document.getElementById("modal");
+
+// Get the button that opens the modal
+const howToPlayBtn = document.getElementById("howToPlay");
+
+// Get the <span> element that closes the modal
+const span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+howToPlayBtn.onclick = function () {
+  modal.style.display = "block";
+};
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function () {
+  modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function (event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+
+// ... (rest of the code remains the same) ...

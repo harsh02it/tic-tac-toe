@@ -3,53 +3,64 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tic Tac Toe</title>
+    <title>Tic Tac Toe Game</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div class="container">
       <h1>Tic Tac Toe Game</h1>
-      <p>
-        Welcome to the tic tac toe game but this is not the normal tic tac toe
-        game. This is a classic Tic Tac Toe game with a fun twist! Get three in
-        a row to win, just like always. But here's the catch:
-      </p>
-      <ul>
-        <li>The first move you make will disappear after your 7th move.</li>
-        <li>
-          The second move you make will disappear after your 8th move, and so
-          on.
-        </li>
-      </ul>
-      <p>
-        Think strategically and plan your moves ahead to outsmart your opponent
-        and be the last one standing!
-      </p>
+
       <div class="controls">
         <div id="message"></div>
         <button id="reset">Reset</button>
+        <button id="howToPlay">How to Play</button>
       </div>
+
       <div class="board">
         <div class="row">
-          <div class="cell" id="cell-0"></div>
-          <div class="cell" id="cell-1"></div>
-          <div class="cell" id="cell-2"></div>
+          <div id="cell-0" class="cell"></div>
+          <div id="cell-1" class="cell"></div>
+          <div id="cell-2" class="cell"></div>
         </div>
         <div class="row">
-          <div class="cell" id="cell-3"></div>
-          <div class="cell" id="cell-4"></div>
-          <div class="cell" id="cell-5"></div>
+          <div id="cell-3" class="cell"></div>
+          <div id="cell-4" class="cell"></div>
+          <div id="cell-5" class="cell"></div>
         </div>
         <div class="row">
-          <div class="cell" id="cell-6"></div>
-          <div class="cell" id="cell-7"></div>
-          <div class="cell" id="cell-8"></div>
+          <div id="cell-6" class="cell"></div>
+          <div id="cell-7" class="cell"></div>
+          <div id="cell-8" class="cell"></div>
         </div>
       </div>
+
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>How to Play</h2>
+          <p>
+            Welcome to this classic Tic Tac Toe game with a fun twist! Get three
+            in a row to win, just like always. But here's the catch:
+          </p>
+          <ul>
+            <li>The first move you make will disappear after your 7th move.</li>
+            <li>
+              The second move you make will disappear after your 8th move, and
+              so on.
+            </li>
+          </ul>
+          <p>
+            Think strategically and plan your moves ahead to outsmart your
+            opponent and be the last one standing!
+          </p>
+        </div>
+      </div>
+
+      <footer>
+        <p>Created by Harshit Savani</p>
+      </footer>
     </div>
-    <footer>
-      <p>Created by Harshit Savani</p>
-    </footer>
+
     <script src="script.js"></script>
   </body>
 </html>
