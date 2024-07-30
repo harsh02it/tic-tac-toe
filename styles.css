@@ -162,12 +162,12 @@ button {
 /* Responsive design */
 @media (min-width: 768px) {
   .board {
-    width: 70vw;
-    max-width: 450px;
+    width: 60vw;
+    max-width: 400px;
   }
 
   .cell {
-    font-size: calc(24px + 2.3vw);
+    font-size: calc(24px + 2.5vw);
   }
 
   button {
@@ -195,7 +195,7 @@ button {
 @media (min-width: 1024px) {
   .board {
     width: 60vw;
-    max-width: 500px;
+    max-width: 400px;
   }
 
   .cell {
