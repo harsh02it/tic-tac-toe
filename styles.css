@@ -108,6 +108,7 @@ button {
 
 /* Modal styles */
 .modal {
+  text-align: left;
   display: none;
   position: fixed;
   z-index: 1;
@@ -132,15 +133,15 @@ button {
 }
 
 .modal-content h2 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   color: #2c3e50;
   margin-bottom: 20px;
 }
 
 .modal-content p,
 .modal-content li {
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 0.8rem;
+  line-height: 1.5;
   margin-bottom: 15px;
   color: #34495e;
 }
@@ -164,6 +165,10 @@ button {
     min-height: 0;
     padding-top: 100px;
   }
+
+  .modal-content {
+    max-width: 250px;
+  }
 }
 
 /* Responsive design */
@@ -186,11 +191,11 @@ button {
   }
 
   .modal-content {
-    padding: 40px;
+    padding: 50px;
   }
 
   .modal-content h2 {
-    font-size: 2.5rem;
+    font-size: 2rem;
   }
 
   .modal-content p,
@@ -223,11 +228,11 @@ button {
 
   .modal-content {
     padding: 50px;
-    max-width: 700px;
+    max-width: 550px;
   }
 
   .modal-content h2 {
-    font-size: 3rem;
+    font-size: 1.8rem;
   }
 
   .modal-content p,
