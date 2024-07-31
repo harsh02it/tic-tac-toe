@@ -1,5 +1,7 @@
 # Tic Tac Toe with a Twist
 
+### Live Game Link: https://harsh02it-tic-tac-toe.netlify.app/
+
 ## How to Play: Tic Tac Toe with a Twist
 
 Welcome to our unique version of Tic Tac Toe! This game adds an exciting twist to the classic rules, making every move count.
@@ -49,7 +51,7 @@ This project is a unique take on the classic Tic Tac Toe game. It introduces an 
 
 - Classic 3x3 Tic Tac Toe board
 - Two-player game: X (red) and O (blue)
-- Disappearing moves: The first move vanishes after the 7th turn, the second after the 8th, and so on
+- Disappearing moves
 - Blurring effect on moves about to disappear
 - Responsive design for various screen sizes
 - Reset functionality
