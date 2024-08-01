@@ -16,19 +16,19 @@ Welcome to our unique version of Tic Tac Toe! This game adds an exciting twist t
 
 Here's where it gets interesting:
 
-1. X's moves:
+1. **X's Moves:**
 
-   - X's 1st move disappears after X's 4th move
-   - X's 2nd move disappears after X's 5th move
-   - This pattern continues for all of X's moves
+   - When your opponent makes their 3rd move, your oldest move turns gray.
+   - After you make your next move, your oldest gray move disappears.
+   - This pattern continues for all of X's moves.
 
-2. O's moves:
+2. **O's Moves:**
 
-   - O's 1st move disappears after O's 4th move
-   - O's 2nd move disappears after O's 5th move
-   - This pattern continues for all of O's moves
+   - When your opponent makes their 3rd move, your oldest move turns gray.
+   - After you make your next move, your oldest gray move disappears.
+   - This pattern continues for all of O's moves.
 
-3. Watch for fading moves:
+3. **Watch for Fading Moves:**
    - When a move turns gray or blurry, it will disappear on that player's next turn.
 
 ### Strategy Tips:
